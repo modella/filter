@@ -1,0 +1,15 @@
+{
+  "name": "modella-filter",
+  "repo": "modella/filter",
+  "description": "A plugin for filtering things from modella objects. Useful for sharing server models to client.",
+  "version": "0.1.0",
+  "keywords": ["modella", "filter", "filtering"],
+  "dependencies": {},
+  "development": {
+  },
+  "license": "MIT",
+  "scripts": [
+    "index.js",
+    "lib/filtered.js"
+  ]
+}
