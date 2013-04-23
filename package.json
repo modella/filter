@@ -1,5 +1,5 @@
 {
-  "name": "modella-filtered",
+  "name": "modella-filter",
   "version": "0.1.0",
   "description": "A plugin for filtering things from modella objects. Useful for sharing server models to client.",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/modella/filtered"
+    "url": "git://github.com/modella/filter"
   },
   "keywords": [
     "modella",
