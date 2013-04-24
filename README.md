@@ -1,12 +1,14 @@
-# Modella-Filtered
+# Modella-Filter
 
 A plugin to filter attributes from [modella](http://github.com/modella/modella) models.
 
 ## Basic Usage
 
-    var modella = require('modella');
+    var modella = require('modella'),
+        filter  = require('modella-filter');
 
     var User = modella('User');
+    User.use(filter);
 
     User.attr('username')
         .attr('email')
@@ -19,21 +21,38 @@ A plugin to filter attributes from [modella](http://github.com/modella/modella) 
               password: '123456' });
 
 
-    user.filter(['password']);
+    user.filter('password');
      => {username: 'JimBo',
             email: 'jimbo@bob.com' }
 
-You can also specify single attributes to filter such as:
+## Filtering multiple attributes
 
-    user.filter('password');
+You can also specify multiple attributes to filter by using an array:
 
+    user.filter(['password', 'username']);
+     =>  { email: 'jimbo@bob.com' }
 
-If you'd like an attribute to always be filtered, you can also specify it when defining the attribute.
+## Always Filtering
 
-Filter can also be called without an argument, filtering just attributes defined to
-auto-filter:
+Sometimes there are certain variables that you'd always want to filter, without
+having to include them as an argument to filter, such as hashed-passwords. You
+can do this by defining it as an option for the attribute.
 
-    User.attr('password', {filtered: true});
+    User.attr('username')
+        .attr('email')
+        .attr('password', {filtered: true})
+
+    user.filter('email');
+     => {username: 'JimBo' }
+
+## No Arguments Required
+
+If you don't specify any fields to be filtered, `.filter()` will just filter
+fields defined to be filtered.
+
+    User.attr('username')
+        .attr('email')
+        .attr('password', {filtered: true})
 
     user.filter();
      => {username: 'JimBo',
